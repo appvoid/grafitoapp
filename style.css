@@ -1,0 +1,126 @@
+/* Thanks to ericrasch: 
+ * https://codepen.io/ericrasch/pen/kWNYLx?editors=0110
+**/
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  box-sizing: border-box;
+  transition: 0.125s all;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+#root {
+  display: block;
+  position: absolute;
+  padding: 4rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Main Theme */
+:root {
+  --main-color: linear-gradient(
+    129.1deg,
+    rgba(243, 199, 83, 1) 26.8%,
+    rgba(18, 235, 207, 1) 114.1%
+  );
+  --accent: #3eb;
+}
+
+/* Light And Dark Theme */
+#root.light,
+#wrapper.light {
+  border-color: #222;
+  background-color: #111;
+  color: #fff;
+}
+#root.dark {
+  background-color: #080808;
+  color: #eee;
+}
+#wrapper.dark {
+  background-color: #151515;
+  border-color: #151515;
+}
+
+#wrapper.dark > h1:before {
+  content: "🛸 ";
+}
+
+#root p {
+  font-size: 1.15rem;
+  margin-top: 1rem;
+}
+
+#wrapper {
+  padding: 2rem;
+  border-radius: 2rem;
+  border-style: solid;
+  box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Mode Toggle */
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  right: 5.65rem;
+
+  margin: 0;
+  margin-top: -2rem;
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 48px;
+  height: 28px;
+  background: #ccc;
+  display: block;
+  border-radius: 100px;
+  position: absolute;
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 19px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.15s;
+}
+
+input:checked + label {
+  color: black;
+  background: var(--main-color);
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+  background-color: #222;
+}
+
+label:active:after {
+  width: 28px;
+}
+
+#privacy {
+  font-weight: 900;
+  background: linear-gradient(
+    129.1deg,
+    rgba(243, 199, 83, 1) 26.8%,
+    rgba(18, 235, 207, 1) 114.1%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 2rem;
+}
